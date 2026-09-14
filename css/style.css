@@ -1,0 +1,105 @@
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: #2b2b2b;
+  background-color: #fbf8f2;
+  margin: 0;
+  line-height: 1.6;
+}
+
+h1, h2 {
+  color: #4c6d1c;
+}
+
+header, footer {
+  text-align: center;
+}
+
+nav ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  background-color: #4c6d1c;
+  padding: 10px 20px;
+  margin: 0;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  padding: 8px 12px;
+}
+
+nav a:hover {
+  background-color: #35500f;
+  border-radius: 4px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  padding: 20px 0;
+}
+
+.product-card {
+  padding: 15px;
+  border: 1px solid #d9e8bd;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  box-sizing: border-box;
+  background-color: #ffffff;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+th, td {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  text-align: left;
+}
+
+thead {
+  background-color: #d9e8bd;
+}
+
+#enquiryForm {
+  max-width: 400px;
+  padding: 20px;
+  border: 1px solid #d9e8bd;
+  border-radius: 10px;
+  margin: 20px auto;
+  background-color: #ffffff;
+  box-sizing: border-box;
+}
+
+#enquiryForm label {
+  display: block;
+  margin-top: 12px;
+  font-weight: bold;
+}
+
+#enquiryForm input,
+#enquiryForm textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 4px;
+  border: 1px solid #d9e8bd;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 600px) {
+  nav ul {
+    flex-direction: column;
+  }
+
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+}
