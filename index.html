@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EL Herbs and Spices Shop</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header>
+    <h1>EL Herbs and Spices Shop</h1>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#products">Our Products</a></li>
+      <li><a href="#enquiry">Enquiry</a></li>
+      <li><a href="admin.html">Admin</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section id="products">
+      <h2>Our Products</h2>
+
+      <div class="product-grid">
+        <div class="product-card">
+          <h3>Turmeric Powder</h3>
+          <p>Rs. 120</p>
+        </div>
+        <div class="product-card">
+          <h3>Black Pepper</h3>
+          <p>Rs. 250</p>
+        </div>
+        <div class="product-card">
+          <h3>Cardamom</h3>
+          <p>Rs. 480</p>
+        </div>
+        <div class="product-card">
+          <h3>Cinnamon Sticks</h3>
+          <p>Rs. 180</p>
+        </div>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Price (Rs.)</th>
+            <th>Category</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Turmeric Powder</td>
+            <td>120</td>
+            <td>Spice Powder</td>
+          </tr>
+          <tr>
+            <td>Black Pepper</td>
+            <td>250</td>
+            <td>Whole Spice</td>
+          </tr>
+          <tr>
+            <td>Cardamom</td>
+            <td>480</td>
+            <td>Whole Spice</td>
+          </tr>
+          <tr>
+            <td>Cinnamon Sticks</td>
+            <td>180</td>
+            <td>Whole Spice</td>
+          </tr>
+          <tr>
+            <td>Cloves</td>
+            <td>210</td>
+            <td>Whole Spice</td>
+          </tr>
+          <tr>
+            <td>Cumin Seeds</td>
+            <td>150</td>
+            <td>Seed Spice</td>
+          </tr>
+          <tr>
+            <td>Coriander Powder</td>
+            <td>130</td>
+            <td>Spice Powder</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="enquiry">
+      <h2>Ask Us About a Product</h2>
+      <form id="enquiryForm" novalidate>
+        <label for="custName">Name:</label>
+        <input type="text" id="custName" name="custName" required>
+
+        <label for="custEmail">Email:</label>
+        <input type="email" id="custEmail" name="custEmail" required>
+
+        <label for="custPhone">Phone:</label>
+        <input type="tel" id="custPhone" name="custPhone">
+
+        <label for="custMsg">Your Question:</label>
+        <textarea id="custMsg" name="custMsg" rows="4"></textarea>
+
+        <button type="submit">Send Enquiry</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>EL Herbs and Spices Shop, Market Road, Kochi | Open 9 AM - 6 PM</p>
+  </footer>
+
+</body>
+</html>
