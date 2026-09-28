@@ -67,12 +67,29 @@
       <form id="enquiryForm" novalidate>
         <label for="custName">Name:</label>
         <input type="text" id="custName" name="custName" required>
+        <span class="error" id="nameError"></span>
+
         <label for="custEmail">Email:</label>
         <input type="email" id="custEmail" name="custEmail" required>
+        <span class="error" id="emailError"></span>
+
+        <label for="custPassword">Password:</label>
+        <input type="password" id="custPassword" name="custPassword" required minlength="8">
+        <span class="error" id="passwordError"></span>
+
+        <label for="custConfirm">Confirm Password:</label>
+        <input type="password" id="custConfirm" name="custConfirm" required>
+        <span class="error" id="confirmError"></span>
+
         <label for="custPhone">Phone:</label>
-        <input type="tel" id="custPhone" name="custPhone">
+        <input type="tel" id="custPhone" name="custPhone" required pattern="[0-9]{10}">
+        <span class="error" id="phoneError"></span>
+
         <label for="custMsg">Your Question:</label>
         <textarea id="custMsg" name="custMsg" rows="4"></textarea>
+        <span class="error" id="msgError"></span>
+        <p>Preview: <span id="preview"></span></p>
+
         <button type="submit">Send Enquiry</button>
         <p id="formMessage"></p>
       </form>

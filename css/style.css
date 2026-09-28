@@ -159,6 +159,11 @@ footer {
   cursor: pointer;
 }
 
+/* Day 5 - validation error text */
+.error {
+  color: #b3261e;
+  font-size: 14px;
+}
 
 @media (max-width: 600px) {
   nav ul {

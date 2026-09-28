@@ -205,3 +205,124 @@ function applyFilters() {
 searchBox.addEventListener("input", applyFilters);
 categoryFilter.addEventListener("change", applyFilters);
 
+// ================= DAY 5 - Form Validation =================
+var nameInput = document.getElementById("custName");
+var emailInput = document.getElementById("custEmail");
+var passwordInput = document.getElementById("custPassword");
+var confirmInput = document.getElementById("custConfirm");
+var phoneInput = document.getElementById("custPhone");
+var msgInput = document.getElementById("custMsg");
+var preview = document.getElementById("preview");
+
+var nameError = document.getElementById("nameError");
+var emailError = document.getElementById("emailError");
+var passwordError = document.getElementById("passwordError");
+var confirmError = document.getElementById("confirmError");
+var phoneError = document.getElementById("phoneError");
+
+// Task 1: checks written with regular expressions
+var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+var phonePattern = /^[0-9]{10}$/;
+
+function validateName() {
+  if (nameInput.value.trim() === "") {
+    nameError.textContent = "Name is required";
+    return false;
+  }
+  nameError.textContent = "";
+  return true;
+}
+function validateEmail() {
+  if (!emailPattern.test(emailInput.value)) {
+    emailError.textContent = "Enter a valid email like name@example.com";
+    return false;
+  }
+  emailError.textContent = "";
+  return true;
+}
+function validatePassword() {
+  if (passwordInput.value.length < 8) {
+    passwordError.textContent = "Password must be at least 8 characters";
+    return false;
+  }
+  passwordError.textContent = "";
+  return true;
+}
+function validatePhone() {
+  if (!phonePattern.test(phoneInput.value)) {
+    phoneError.textContent = "Phone number must be exactly 10 digits";
+    return false;
+  }
+  phoneError.textContent = "";
+  return true;
+}
+
+// Task 2: Constraint Validation API
+// setCustomValidity() gives the field our own error. An empty string clears it.
+function checkConfirm() {
+  if (confirmInput.value !== passwordInput.value) {
+    confirmInput.setCustomValidity("Passwords do not match");
+  } else {
+    confirmInput.setCustomValidity("");
+  }
+  confirmError.textContent = confirmInput.validationMessage;
+}
+
+// checkValidity() is true when the field is fine; the validity object tells us why not
+function liveCheck(input, errorSpan, messages) {
+  if (input.checkValidity()) {
+    errorSpan.textContent = "";
+  } else if (input.validity.valueMissing) {
+    errorSpan.textContent = messages.missing;
+  } else if (input.validity.typeMismatch || input.validity.patternMismatch) {
+    errorSpan.textContent = messages.invalid;
+  } else if (input.validity.tooShort) {
+    errorSpan.textContent = messages.short;
+  } else {
+    errorSpan.textContent = input.validationMessage;
+  }
+}
+
+// real-time feedback while typing (the input event)
+nameInput.addEventListener("input", function () {
+  liveCheck(nameInput, nameError, { missing: "Name is required" });
+});
+emailInput.addEventListener("input", function () {
+  liveCheck(emailInput, emailError, { missing: "Email is required", invalid: "Enter a valid email" });
+});
+passwordInput.addEventListener("input", function () {
+  liveCheck(passwordInput, passwordError, { missing: "Password is required", short: "Password must be at least 8 characters" });
+  if (confirmInput.value !== "") { checkConfirm(); }
+});
+confirmInput.addEventListener("input", checkConfirm);
+phoneInput.addEventListener("input", function () {
+  liveCheck(phoneInput, phoneError, { missing: "Phone is required", invalid: "Phone number must be exactly 10 digits" });
+});
+
+// on submit: run every check and show a message
+enquiryForm.addEventListener("submit", function (event) {
+  event.preventDefault();
+
+  var okName = validateName();
+  var okEmail = validateEmail();
+  var okPassword = validatePassword();
+  var okPhone = validatePhone();
+  checkConfirm();
+  var okConfirm = confirmInput.checkValidity();
+
+  if (okName && okEmail && okPassword && okPhone && okConfirm) {
+    formMessage.textContent = "Thank you, " + nameInput.value + "! Your enquiry was sent.";
+  } else {
+    formMessage.textContent = "Please fix the errors above.";
+  }
+});
+
+// Task 3: showing typed text safely
+msgInput.addEventListener("input", function () {
+  // Test done earlier: preview.innerHTML = msgInput.value;
+  // Typing <script>alert(1)</script> (or <img src=x onerror=alert(1)>) made the browser
+  // treat the input as real HTML, so a visitor could run their own code on our page.
+  // Safe rendering: textContent shows whatever is typed as plain text only,
+  // so the tags are displayed as characters and never run.
+  preview.textContent = msgInput.value;
+});
