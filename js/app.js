@@ -54,6 +54,19 @@ function renderProducts(list) {
     card.appendChild(stockTag);
     card.appendChild(catTag);
 
+    // Day 2: Add to Cart button and hover zoom
+    var cartBtn = document.createElement("button");
+    cartBtn.textContent = "Add to Cart";
+    cartBtn.className = "cart-btn";
+    cartBtn.setAttribute("data-name", p.name);
+    if (p.stock === 0) {
+      cartBtn.disabled = true;
+    }
+    cartBtn.addEventListener("click", addToCart);
+    card.appendChild(cartBtn);
+
+    card.addEventListener("mouseenter", zoomIn);
+    card.addEventListener("mouseleave", zoomOut);
 
     productGrid.appendChild(card);
   }
@@ -77,5 +90,58 @@ for (var c = 0; c < allCards.length; c++) {
 // innerHTML reads the text as HTML code, so tags are created as real elements.
 // That is risky if the text comes from a user.
 
+// ================= DAY 2 - Event Handling =================
+var searchBox = document.getElementById("searchBox");
+var cartMessage = document.getElementById("cartMessage");
+var formMessage = document.getElementById("formMessage");
+var enquiryForm = document.getElementById("enquiryForm");
+
+// Task 1 + 2: click on Add to Cart
+function addToCart(event) {
+  console.log(event);
+  // Three properties of this event object:
+  // event.type   -> "click" (the kind of event)
+  // event.target -> the button that was clicked
+  // event.clientX -> where on the screen the mouse was
+  var name = event.target.getAttribute("data-name");
+  cartMessage.textContent = name + " added to cart!";
+}
+
+// mouse hover: add and remove the zoom class
+function zoomIn(event) {
+  console.log(event);
+  // event.type -> "mouseenter", event.currentTarget -> the card, event.relatedTarget -> element the mouse came from
+  event.currentTarget.classList.add("zoom");
+}
+function zoomOut(event) {
+  console.log(event);
+  // event.type -> "mouseleave", event.currentTarget -> the card, event.timeStamp -> when it happened
+  event.currentTarget.classList.remove("zoom");
+}
+
+// key press in the search box
+searchBox.addEventListener("keydown", function (event) {
+  console.log(event);
+  // event.type -> "keydown", event.key -> which key ("Enter", "Escape"), event.target -> the search box
+  if (event.key === "Enter") {
+    cartMessage.textContent = "You searched for: " + searchBox.value;
+  }
+  if (event.key === "Escape") {
+    searchBox.value = "";
+    cartMessage.textContent = "";
+  }
+});
+
+// Task 3: stop the form from reloading the page
+enquiryForm.addEventListener("submit", function (event) {
+  event.preventDefault();
+  console.log(event);
+  // event.type -> "submit", event.target -> the form, event.defaultPrevented -> true now
+  formMessage.textContent = "Form submitted (the page did not reload).";
+});
+// Why addEventListener is better than the onclick attribute:
+// 1. we can attach many listeners to the same element (onclick keeps only one)
+// 2. the JavaScript stays in app.js and the HTML stays clean
+// 3. we can remove a listener later with removeEventListener
 
 

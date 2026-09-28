@@ -119,6 +119,32 @@ footer {
   background-color: #eeeeee;
 }
 
+/* Day 2 - hover zoom, cart button, messages, search box */
+.product-card { transition: transform 0.2s; }
+.zoom { transform: scale(1.05); }
+
+.cart-btn {
+  background-color: #b3261e;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+.cart-btn:disabled {
+  background-color: #999999;
+  cursor: not-allowed;
+}
+
+#searchBox, #categoryFilter {
+  padding: 6px;
+  margin: 0 8px 10px 0;
+}
+
+#cartMessage, #formMessage {
+  color: #2e7d32;
+  font-weight: bold;
+}
 
 
 
