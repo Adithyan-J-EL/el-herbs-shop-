@@ -129,6 +129,7 @@ searchBox.addEventListener("keydown", function (event) {
   if (event.key === "Escape") {
     searchBox.value = "";
     cartMessage.textContent = "";
+    applyFilters();
   }
 });
 
@@ -144,4 +145,63 @@ enquiryForm.addEventListener("submit", function (event) {
 // 2. the JavaScript stays in app.js and the HTML stays clean
 // 3. we can remove a listener later with removeEventListener
 
+// ================= DAY 4 - Arrays and Objects =================
+
+// Task 1: student scores
+var students = [
+  { name: "Anu", roll: 1, mark: 78 },
+  { name: "Bibin", roll: 2, mark: 35 },
+  { name: "Catherine", roll: 3, mark: 92 },
+  { name: "Dev", roll: 4, mark: 56 },
+  { name: "Esha", roll: 5, mark: 41 }
+];
+
+var studentNames = students.map(function (s) { return s.name; });
+var passedStudents = students.filter(function (s) { return s.mark >= 40; });
+var totalMarks = students.reduce(function (sum, s) { return sum + s.mark; }, 0);
+var averageMark = totalMarks / students.length;
+console.log("Names:", studentNames);
+console.log("Passed:", passedStudents);
+console.log("Total:", totalMarks, "Average:", averageMark);
+
+// Task 2: find, some, every, Object.keys, Object.entries
+var highest = Math.max.apply(null, students.map(function (s) { return s.mark; }));
+var topper = students.find(function (s) { return s.mark === highest; });
+var anyFailed = students.some(function (s) { return s.mark < 40; });
+var allAbove30 = students.every(function (s) { return s.mark > 30; });
+console.log("Topper:", topper.name);
+console.log("Anyone failed?", anyFailed, "| Everyone above 30?", allAbove30);
+
+var oneStudent = students[0];
+console.log("Keys:", Object.keys(oneStudent));
+var pairs = Object.entries(oneStudent);
+for (var k = 0; k < pairs.length; k++) {
+  console.log(pairs[k][0] + " = " + pairs[k][1]);
+}
+
+// same methods on the products array
+var productNames = products.map(function (p) { return p.name; });
+var inStock = products.filter(function (p) { return p.stock > 0; });
+var stockValue = products.reduce(function (sum, p) { return sum + p.price * p.stock; }, 0);
+console.log("Product names:", productNames);
+console.log("In stock:", inStock);
+console.log("Total stock value: Rs.", stockValue);
+
+// Task 3: search and category filter working together
+var categoryFilter = document.getElementById("categoryFilter");
+
+function applyFilters() {
+  var text = searchBox.value.toLowerCase();
+  var chosen = categoryFilter.value;
+
+  var result = products.filter(function (p) {
+    var nameMatches = p.name.toLowerCase().includes(text);
+    var categoryMatches = (chosen === "all") || (p.category === chosen);
+    return nameMatches && categoryMatches;   // both must be true
+  });
+
+  renderProducts(result);
+}
+searchBox.addEventListener("input", applyFilters);
+categoryFilter.addEventListener("change", applyFilters);
 
