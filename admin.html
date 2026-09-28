@@ -10,6 +10,7 @@
 
   <header>
     <h1>Admin Panel</h1>
+    <p>Shop task list</p>
   </header>
 
   <nav>
@@ -20,8 +21,11 @@
 
   <main>
     <section>
-      <h2>Admin Area</h2>
-      <p>This page will be used for admin stuff later in the course.</p>
+      <h2>Shop Tasks</h2>
+      <input type="text" id="taskInput" placeholder="e.g. Restock turmeric">
+      <button id="addBtn">Add</button>
+      <p>Total tasks: <span id="taskCount">0</span></p>
+      <ul id="taskList"></ul>
     </section>
   </main>
 
@@ -29,5 +33,6 @@
     <p>EL Herbs and Spices Shop, Market Road, Kochi | Open 9 AM - 6 PM</p>
   </footer>
 
+  <script src="js/admin.js"></script>
 </body>
 </html>

@@ -146,6 +146,18 @@ footer {
   font-weight: bold;
 }
 
+/* Day 3 - admin task list */
+#taskInput { padding: 6px; }
+#taskList li { margin-bottom: 8px; }
+
+.delete-btn {
+  margin-left: 10px;
+  background-color: #b3261e;
+  color: white;
+  border: none;
+  padding: 3px 8px;
+  cursor: pointer;
+}
 
 
 @media (max-width: 600px) {
