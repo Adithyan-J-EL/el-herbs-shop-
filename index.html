@@ -9,84 +9,47 @@
 <body>
 
   <header>
-    <h1>EL Herbs and Spices Shop</h1>
+    <h1 id="shopHeading">EL Herbs and Spices Shop</h1>
+    <p>Fresh spices from the hills of Kerala</p>
+    <img id="shopImage" src="images/spices1.svg" alt="Spices" width="100">
+    <br>
+    <button id="changeBtn">Change Heading</button>
   </header>
 
   <nav>
     <ul>
-      <li><a href="#products">Our Products</a></li>
+      <li><a href="#products">Products</a></li>
       <li><a href="#enquiry">Enquiry</a></li>
       <li><a href="admin.html">Admin</a></li>
     </ul>
   </nav>
 
   <main>
+
+    <section id="intro">
+      <h2>Welcome to our spice market</h2>
+      <p>We sell whole spices, spice powders and herbs. All our spices are
+      sourced from local farms and packed fresh every week.</p>
+    </section>
+
     <section id="products">
-      <h2>Our Products</h2>
+      <h2>What We Sell</h2>
+      <!-- JavaScript puts the product cards in here -->
+      <div id="productGrid"></div>
 
-      <div class="product-grid">
-        <div class="product-card">
-          <h3>Turmeric Powder</h3>
-          <p>Rs. 120</p>
-        </div>
-        <div class="product-card">
-          <h3>Black Pepper</h3>
-          <p>Rs. 250</p>
-        </div>
-        <div class="product-card">
-          <h3>Cardamom</h3>
-          <p>Rs. 480</p>
-        </div>
-        <div class="product-card">
-          <h3>Cinnamon Sticks</h3>
-          <p>Rs. 180</p>
-        </div>
-      </div>
-
+      <h2>Price List</h2>
       <table>
         <thead>
-          <tr>
-            <th>Product</th>
-            <th>Price (Rs.)</th>
-            <th>Category</th>
-          </tr>
+          <tr><th>Product</th><th>Weight</th><th>Price (Rs.)</th><th>Category</th></tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Turmeric Powder</td>
-            <td>120</td>
-            <td>Spice Powder</td>
-          </tr>
-          <tr>
-            <td>Black Pepper</td>
-            <td>250</td>
-            <td>Whole Spice</td>
-          </tr>
-          <tr>
-            <td>Cardamom</td>
-            <td>480</td>
-            <td>Whole Spice</td>
-          </tr>
-          <tr>
-            <td>Cinnamon Sticks</td>
-            <td>180</td>
-            <td>Whole Spice</td>
-          </tr>
-          <tr>
-            <td>Cloves</td>
-            <td>210</td>
-            <td>Whole Spice</td>
-          </tr>
-          <tr>
-            <td>Cumin Seeds</td>
-            <td>150</td>
-            <td>Seed Spice</td>
-          </tr>
-          <tr>
-            <td>Coriander Powder</td>
-            <td>130</td>
-            <td>Spice Powder</td>
-          </tr>
+          <tr><td>Turmeric Powder</td><td>100g</td><td>60</td><td>Spice Powder</td></tr>
+          <tr><td>Black Pepper</td><td>100g</td><td>90</td><td>Whole Spice</td></tr>
+          <tr><td>Cardamom</td><td>50g</td><td>120</td><td>Whole Spice</td></tr>
+          <tr><td>Cinnamon Sticks</td><td>100g</td><td>80</td><td>Whole Spice</td></tr>
+          <tr><td>Coriander Powder</td><td>200g</td><td>70</td><td>Spice Powder</td></tr>
+          <tr><td>Bay Leaves</td><td>50g</td><td>40</td><td>Herb</td></tr>
+          <tr><td>Cloves</td><td>50g</td><td>105</td><td>Whole Spice</td></tr>
         </tbody>
       </table>
     </section>
@@ -96,24 +59,23 @@
       <form id="enquiryForm" novalidate>
         <label for="custName">Name:</label>
         <input type="text" id="custName" name="custName" required>
-
         <label for="custEmail">Email:</label>
         <input type="email" id="custEmail" name="custEmail" required>
-
         <label for="custPhone">Phone:</label>
         <input type="tel" id="custPhone" name="custPhone">
-
         <label for="custMsg">Your Question:</label>
         <textarea id="custMsg" name="custMsg" rows="4"></textarea>
-
         <button type="submit">Send Enquiry</button>
+        <p id="formMessage"></p>
       </form>
     </section>
+
   </main>
 
   <footer>
     <p>EL Herbs and Spices Shop, Market Road, Kochi | Open 9 AM - 6 PM</p>
   </footer>
 
+  <script src="js/app.js"></script>
 </body>
 </html>

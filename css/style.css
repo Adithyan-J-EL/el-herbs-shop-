@@ -1,105 +1,133 @@
 body {
-  font-family: 'Segoe UI', Arial, sans-serif;
-  color: #2b2b2b;
-  background-color: #fbf8f2;
+  font-family: Arial, sans-serif;
+  color: #3b2a1a;
+  background-color: #fff6e0;
   margin: 0;
   line-height: 1.6;
 }
 
-h1, h2 {
-  color: #4c6d1c;
+header {
+  background-color: #b3261e;
+  color: white;
+  text-align: center;
+  padding: 20px;
 }
 
-header, footer {
-  text-align: center;
-}
+header h1 { margin: 0; }
+header p { margin: 5px 0 0 0; }
 
 nav ul {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: space-around;
   list-style: none;
-  background-color: #4c6d1c;
-  padding: 10px 20px;
+  background-color: #3b2a1a;
   margin: 0;
+  padding: 12px 0;
 }
 
 nav a {
   color: white;
   text-decoration: none;
-  padding: 8px 12px;
+  padding: 6px 12px;
 }
 
 nav a:hover {
-  background-color: #35500f;
-  border-radius: 4px;
+  background-color: #e8a317;
+  color: #3b2a1a;
 }
 
-.product-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 16px;
-  padding: 20px 0;
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
-.product-card {
-  padding: 15px;
-  border: 1px solid #d9e8bd;
-  border-radius: 10px;
-  text-align: center;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-  box-sizing: border-box;
-  background-color: #ffffff;
-}
+h2 { color: #b3261e; }
 
 table {
   width: 100%;
   border-collapse: collapse;
-  margin: 20px 0;
+  margin-bottom: 30px;
 }
 
 th, td {
-  padding: 10px;
-  border-bottom: 1px solid #ccc;
+  border: 1px solid #cccccc;
+  padding: 8px;
   text-align: left;
 }
 
-thead {
-  background-color: #d9e8bd;
-}
+thead { background-color: #e8a317; }
 
 #enquiryForm {
   max-width: 400px;
-  padding: 20px;
-  border: 1px solid #d9e8bd;
-  border-radius: 10px;
   margin: 20px auto;
+  padding: 15px;
   background-color: #ffffff;
-  box-sizing: border-box;
+  border: 2px solid #e8a317;
 }
 
 #enquiryForm label {
   display: block;
-  margin-top: 12px;
-  font-weight: bold;
+  margin-top: 10px;
 }
 
 #enquiryForm input,
 #enquiryForm textarea {
   width: 100%;
-  padding: 8px;
+  padding: 6px;
   margin-top: 4px;
-  border: 1px solid #d9e8bd;
-  border-radius: 6px;
   box-sizing: border-box;
 }
+
+#enquiryForm button {
+  margin-top: 15px;
+  padding: 8px 16px;
+  background-color: #b3261e;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+footer {
+  background-color: #3b2a1a;
+  color: white;
+  text-align: center;
+  padding: 15px;
+}
+
+/* Day 1 - product cards and heading highlight */
+.highlight { color: #e8a317; }
+
+#productGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.product-card {
+  background-color: #ffffff;
+  border: 2px solid #e8a317;
+  padding: 15px;
+  text-align: center;
+}
+
+.product-card h3 { margin-top: 0; }
+
+.out-of-stock {
+  opacity: 0.5;
+  background-color: #eeeeee;
+}
+
+
+
 
 @media (max-width: 600px) {
   nav ul {
     flex-direction: column;
+    text-align: center;
   }
-
-  .product-grid {
+  #productGrid {
     grid-template-columns: 1fr;
   }
 }
